@@ -214,9 +214,14 @@ def write_200_status(path,status,length,redirect,title,filename,choice):
     filename = filename[0:-5] + '-200' + '.html'
     if choice == '1':
         if os.path.exists(filename):
-            LOGGER.log(LoggingLevel.SYSINFO,"Deleting " + filename + " ...")
+            LOGGER.log(LoggingLevel.SYSINFO,"Deleting older " + filename + " ...")
             os.remove(filename)
-            LOGGER.log(LoggingLevel.SUCCESS,"Deleting "  + filename + " Done")
+            LOGGER.log(LoggingLevel.SUCCESS,"Deleting older "  + filename + " Done")
+            file = open(filename,'w')
+            LOGGER.log(LoggingLevel.SYSINFO,"Writing lastest " + filename + " title")
+            write_title(file)
+            LOGGER.log(LoggingLevel.SUCCESS,"Writing lastest " + filename + " title Done")
+            file.close()
         else:
             file = open(filename,'w')
             LOGGER.log(LoggingLevel.SYSINFO,"Writing " + filename + " title")
@@ -247,9 +252,14 @@ def write_403_status(path,status,length,redirect,title,filename,choice):
     filename = filename[0:-5] + '-403' + '.html'
     if choice == '1':
         if os.path.exists(filename):
-            LOGGER.log(LoggingLevel.SYSINFO,"Deleting " + filename + " ...")
+            LOGGER.log(LoggingLevel.SYSINFO,"Deleting older " + filename + " ...")
             os.remove(filename)
-            LOGGER.log(LoggingLevel.SUCCESS,"Deleting "  + filename + " Done")
+            LOGGER.log(LoggingLevel.SUCCESS,"Deleting older "  + filename + " Done")
+            file = open(filename,'w')
+            LOGGER.log(LoggingLevel.SYSINFO,"Writing lastest " + filename + " title")
+            write_title(file)
+            LOGGER.log(LoggingLevel.SUCCESS,"Writing lastest " + filename + " title Done")
+            file.close()
         else:
             file = open(filename,'w')
             LOGGER.log(LoggingLevel.SYSINFO,"Writing " + filename + " title")
@@ -295,7 +305,7 @@ def main(argv=sys.argv[1:]):
     redirect = []
     flag = 0
         
-    usage = 'Usage: python json-to-file.py [-i|--ifile] target.txt'
+    usage = 'Usage: python json-to-file.py [-i|--ifile] target.json'
     parser = OptionParser(usage)
     parser.add_option("-i","--ifile",action='store',dest="json_file",help="Input your json file",default=None)
 

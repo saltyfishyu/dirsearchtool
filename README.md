@@ -12,15 +12,21 @@
 
   >`python3 dirsearch.py -L target.txt -e php --json-report=./reports/target/target-report.json`
 
-  >in ./reports/target/ ( target-report.json & json-to-file.py)
+  >./reports/target #ls
+  
+  >target-report.json json-to-file.py
 
   >`python json-to-file.py -i target-report.json`
   
-  >in ./reports/target/ ( target-report.json & json-to-file.py & target-report.html & target-report-200.html)
+  >./reports/target #ls 
+  
+  >target-report.json json-to-file.py target-report.html target-report-200.html target-report-403.html 
 
 * Update
 
   >v1.0 None
 
   >v1.1 thread & checkwaf
+  
+  >v1.1.1 Update
   
